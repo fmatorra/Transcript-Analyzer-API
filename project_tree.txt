@@ -1,0 +1,26 @@
+.
+├── app
+│   ├── adapters
+│   │   ├── __init__.py
+│   │   └── openai.py
+│   ├── configurations.py
+│   ├── __init__.py
+│   ├── ports
+│   │   ├── __init__.py
+│   │   └── llm.py
+│   └── prompts.py
+├── assessment.md
+├── .env
+├── .gitignore
+├── poetry.lock
+├── project_tree.txt
+├── pyproject.toml
+├── README.md
+└── tests
+    ├── adapters
+    │   ├── __init__.py
+    │   ├── mock_data.py
+    │   └── test_openai.py
+    └── __init__.py
+
+6 directories, 18 files

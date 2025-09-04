@@ -1,1 +1,80 @@
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Python bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+
+# --- Virtual envs ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Packaging / builds ---
+build/
+dist/
+wheels/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+*.egg
+MANIFEST
+
+# --- Caches & tooling ---
+.cache/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pylint.d/
+.pyre/
+.pytype/
+.tox/
+.nox/
+.hypothesis/
+.benchmarks/
+
+# --- Coverage ---
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# --- Logs ---
+logs/
+*.log
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Env files (keep example tracked) ---
 .env
+.env.*
+!.env.example
+
+# --- Databases / local state ---
+*.db
+*.sqlite3
+
+# --- Node (if bundling a frontend) ---
+node_modules/
+*.tsbuildinfo
+
+# --- Docs / static site builds ---
+docs/_build/
+site/
+
+# --- FastAPI / Uvicorn runtime (uncomment if you output these) ---
+# uvicorn.log
+
+__pycache__/
+*.py[cod]
+*$py.class
