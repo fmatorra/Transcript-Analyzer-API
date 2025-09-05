@@ -12,7 +12,6 @@ class TranscriptAnalysis:
     next_actions: List[str]
     created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
-
-@staticmethod
-def new(summary: str, next_actions: List[str]) -> "TranscriptAnalysis":
-    return TranscriptAnalysis(id=str(uuid4()), summary=summary, next_actions=next_actions)
+    @staticmethod
+    def new(summary: str, next_actions: List[str]) -> "TranscriptAnalysis":
+        return TranscriptAnalysis(id=str(uuid4()), summary=summary, next_actions=next_actions)

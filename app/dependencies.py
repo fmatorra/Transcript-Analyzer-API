@@ -2,7 +2,7 @@
 from functools import lru_cache
 from app.repositories.memory import InMemoryTranscriptRepository
 from app.services.analyzer import TranscriptAnalyzerService
-
+from app.configurations import settings
 
 @lru_cache(maxsize=1)
 def get_repository() -> InMemoryTranscriptRepository:
@@ -12,17 +12,21 @@ def get_repository() -> InMemoryTranscriptRepository:
 
 @lru_cache(maxsize=1)
 def get_llm_adapter():
-    """Instantiate the provided OpenAI adapter that conforms to app/ports/llm.py.
-
-
-    Adjust the class import below to match the concrete adapter implementation.
+    """
+    Instantiate the provided OpenAI adapter that conforms to app/ports/llm.py.
     """
     try:
-        from app.adapters.openai import OpenAIAdapter # <-- align to your adapter class name
-        return OpenAIAdapter()
-    except Exception as exc: # ImportError or constructor errors
+        from app.adapters.openai import OpenAIAdapter
+        return OpenAIAdapter(
+            api_key=settings.OPENAI_API_KEY,
+            model=settings.OPENAI_MODEL,
+        )
+    except Exception as exc:
+        # Bubble a clear, actionable message
         raise RuntimeError(
-        "Failed to instantiate OpenAI adapter. Ensure app/adapters/openai.py exposes `OpenAIAdapter`."
+            "Failed to instantiate OpenAI adapter. "
+            "Check that app/adapters/openai.py exposes `OpenAIAdapter` and that "
+            "OPENAI_API_KEY / OPENAI_MODEL are set."
         ) from exc
 
 

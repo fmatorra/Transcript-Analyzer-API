@@ -24,23 +24,6 @@ async def analyze_transcript_get(
     return AnalysisResponse(id=analysis.id, summary=analysis.summary, next_actions=analysis.next_actions)
 
 
-
-
-@router.post("/analyze", response_model=AnalysisResponse, responses={400: {"model": ErrorResponse}})
-async def analyze_transcript_post(
-    body: AnalyzeBody,
-    service: TranscriptAnalyzerService = Depends(get_analyzer_service),
-    repo: InMemoryTranscriptRepository = Depends(get_repository),
-):
-    try:
-        analysis = await service.analyze(body.transcript)
-    except ValueError as ve:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(ve))
-
-    repo.save(analysis)
-    return AnalysisResponse(id=analysis.id, summary=analysis.summary, next_actions=analysis.next_actions)
-
-
 @router.get("/analyses/{analysis_id}", response_model=AnalysisResponse, responses={404: {"model": ErrorResponse}})
 async def get_analysis_by_id(
     analysis_id: str,
