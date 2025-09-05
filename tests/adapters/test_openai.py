@@ -6,7 +6,7 @@ from app.adapters import openai
 
 class Response(pydantic.BaseModel):
     summary: str
-    action_items: list[str]
+    next_actions: list[str]
 
 
 def test_openai_adapter() -> None:
@@ -28,4 +28,4 @@ def test_openai_adapter() -> None:
     # assert
     print(serialized_response)
     assert "summary" in serialized_response.keys()
-    assert "action_items" in serialized_response.keys()
+    assert "next_actions" in serialized_response.keys()
